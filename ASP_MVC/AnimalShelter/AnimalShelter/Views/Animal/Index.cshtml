@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model IEnumerable<AnimalShelter.Models.Animal>
+
+@{
+    ViewData["Title"] = "Animal List";
+    Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+}
+
+<h1>Animal List</h1>
+
+<form method="get">
+    <input type="text" name="speciesFilter" placeholder="Filter by species" value="@ViewData["SpeciesFilter"]" />
+    <input type="text" name="nameFilter" placeholder="Filter by name" value="@ViewData["NameFilter"]" />
+    <button type="submit">Filter</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Species</th>
+            <th>Age</th>
+            <th>Status</th>
+            @if (User.IsInRole("Manager"))
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td>@animal.Id</td>
+                <td>@animal.Name</td>
+                <td>@animal.Species</td>
+                <td>@animal.Age</td>
+                <td>@animal.Status</td>
+                @if (User.IsInRole("Manager"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@animal.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@animal.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Manager"))
+{
+    <a asp-action="Create" class="btn btn-primary">Add New Animal</a>
+}

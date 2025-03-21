@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "How to Help";
+    if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Doctor"))
+    {
+        Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomePrivacyLayout.cshtml";
+    }
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Thank you for your interest in helping our animal shelter! There are many ways you can support us and make a difference in the lives of animals in need. Choose the option that suits you best:</p>
+
+<h3>1. Adopt an Animal</h3>
+<p>Consider opening your heart and home to a new furry friend. Our shelter has many animals in need of loving homes. If you're interested in adopting, please visit our <a asp-controller="Animal" asp-action="Available">Available Animals</a> page to see who’s waiting for a forever home.</p>
+
+<h3>2. Volunteer Your Time</h3>
+<p>Volunteers play a crucial role in our shelter's operations. Whether you're helping with animal care, organizing events, or providing administrative support, we welcome your time and skills. To become a volunteer, please visit our shelter or call us. Our staff will help you figure it all out.</p>
+
+<h3>3. Donate</h3>
+<p>Your donations help us provide food, medical care, and shelter for the animals. Even small contributions can make a big difference. Please bring or send any food or animal toys directly to our shelter.</p>
+
+<h3>4. Spread the Word</h3>
+<p>If you can’t contribute financially or with your time, you can still make a difference by spreading the word about our shelter. Share our mission on social media, tell your friends and family, and help us raise awareness about animal adoption and welfare.</p>
+
+<h3>5. Foster an Animal</h3>
+<p>Fostering provides a temporary home for animals who need extra care before they can be adopted. If you’re interested in fostering, please give us a call or visit the shelter </p>
+
+<p>We deeply appreciate any help you can offer! Your support helps us continue our mission of rescuing and caring for animals in need.</p>

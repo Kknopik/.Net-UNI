@@ -1,0 +1,46 @@
+﻿@{
+    if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Doctor"))
+    {
+        Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomePrivacyLayout.cshtml";
+    }
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Animal</th>
+            <th>Record Date</th>
+            <th>Description</th>
+            @if (User.IsInRole("Doctor"))
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.Animal.Name</td>
+                <td>@record.RecordDate.ToShortDateString()</td>
+                <td>@record.Description</td>
+                @if (User.IsInRole("Doctor"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@record.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@record.Id">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (User.IsInRole("Doctor"))
+{
+    <a asp-action="Create" asp-controller="MedicalRecord" class="btn btn-primary">Create New Medical Record</a>
+}

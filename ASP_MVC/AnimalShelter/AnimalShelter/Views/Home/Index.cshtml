@@ -1,0 +1,77 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Welcome to the Animal Shelter";
+    if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Doctor"))
+    {
+        Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomePrivacyLayout.cshtml";
+    }
+}
+
+@if (!User.Identity.IsAuthenticated || !User.IsInRole("Admin") && !User.IsInRole("Manager") && !User.IsInRole("Doctor"))
+{
+    <div class="text-center">
+        <h1 class="display-4">Welcome to the Animal Shelter</h1>
+        <p>Learn more about our <a href="https://www.animalshelter.com/adopt">adoptable animals</a> and how you can help.</p>
+    </div>
+}
+
+@if (User.IsInRole("Member"))
+{
+    <h2>Hello, @User.Identity.Name!</h2>
+}
+else if (User.IsInRole("Admin"))
+{
+    <h3>Welcome, Admin! You can oversee operations and assign user roles.</h3>
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Roles" asp-action="AssignRole">Assign Roles</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="Index">Manage Animals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="MedicalRecord" asp-action="Index">Medical Records</a>
+        </li>
+    </ul>
+}
+else if (User.IsInRole("Manager"))
+{
+    <h3>Welcome, Manager! You can manage animal records.</h3>
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Animal" asp-action="Index">Manage Animals</a>
+        </li>
+    </ul>
+}
+else if (User.IsInRole("Doctor"))
+{
+    <h3>Hi Doctor! You can manage the health records.</h3>
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="MedicalRecord" asp-action="Index">Medical Records</a>
+        </li>
+    </ul>
+}
+else if (User.Identity.IsAuthenticated)
+{
+    <h3>Thank you for being here! Explore animals and consider adopting.</h3>
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Animal" asp-action="Available">Available Animals</a>
+        </li>
+    </ul>
+}
+else
+{
+    <p>
+        Log in to manage your tasks or find your new furry friend to adopt.
+        <a href="/Identity/Account/Login" class="btn btn-primary">Log in</a>
+    </p>
+}

@@ -1,0 +1,370 @@
+﻿/* General Body Styles */
+html, body, .WorkerBody {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* Light background */
+    color: #333333; /* Dark text for good readability */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header (Navigation Bar) */
+header {
+    background-color: #1a5d3d; /* Earthy green */
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #333333 !important; /* Match body text color */
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+    .navbar-nav .nav-item .nav-link:hover {
+        background-color: #d3d3d3; /* Slightly darker green */
+        color: #333333 !important; /* Ensure text color remains the same when hovered */
+    }
+
+/* Main Content */
+.container {
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    flex-grow: 1; /* Ensures content fills available space */
+}
+
+h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1a5d3d;
+}
+
+/* Footer */
+footer {
+    background-color: #2c8c4b; /* Slightly darker green */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto; /* Ensures footer stays at the bottom */
+}
+
+    footer a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+/* Card Style for Animals and Medical Records */
+.card {
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+}
+
+.card-header {
+    background-color: #1a5d3d;
+    color: white;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background-color: #f9f9f9;
+    border-top: 1px solid #dddddd;
+    text-align: right;
+}
+
+/* Buttons */
+button {
+    background-color: #1a5d3d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #d3d3d3;
+    }
+
+/* Input Fields */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+        border-color: #1a5d3d;
+        outline: none;
+    }
+
+/* Animal Images */
+.animal-img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Animal Listing Page */
+.animal-listing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.animal-card {
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+    .animal-card:hover {
+        transform: scale(1.05);
+    }
+
+    .animal-card img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+.content-container {
+    position: relative;
+    background-color: rgba(255, 255, 255, 1);
+}
+/* WORKER*/
+/* General Body Styles */
+.WorkerBody {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh; /* Ensures the content takes at least full viewport height */
+    flex-direction: column; /* Flex layout to push footer down */
+}
+
+/* Sidebar Styles */
+.WorkerSidebar {
+    background-color: #3b3f44; /* Dark gray */
+    color: white;
+    width: 250px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+}
+    /* Override navbar link hover color in this layout */
+    .WorkerSidebar .navbar-nav .nav-item .nav-link {
+        color: white !important; /* Default text color */
+        padding: 10px 15px;
+    }
+
+        .WorkerSidebar .navbar-nav .nav-item .nav-link:hover {
+            color: white !important; /* Ensure the text stays white on hover */
+            background-color: #5c6369; /* Darker gray on hover */
+        }
+
+        .WorkerSidebar .navbar-nav .nav-item .nav-link.active {
+            color: white !important; /* White color for active links */
+        }
+
+
+.WorkerLogo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.WorkerNav {
+    list-style: none;
+    padding-left: 0;
+}
+
+    .WorkerNav .nav-item {
+        margin: 10px 0;
+    }
+
+    /* Ensure all navigation links have white text */
+    .WorkerNav .nav-link {
+        color: white !important; /* Forces white text */
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        border-radius: 5px;
+    }
+
+        .WorkerNav .nav-link:hover {
+            color: white !important; /* Ensures the text remains white on hover */
+            background-color: #5c6369; /* Darker gray on hover */
+        }
+
+        .WorkerNav .nav-link.active {
+            color: white !important; /* Ensures the text stays white if it's the active link */
+        }
+
+
+/* Content Styles */
+.WorkerContent {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+    background-color: #f9f9f9; /* Light gray background for content */
+    display: flex;
+    flex-direction: column; /* Ensures footer is pushed down */
+}
+
+.WorkerHeader {
+    background-color: #ffffff; /* White background for header */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.Workerfooter {
+    text-align: center;
+    padding: 10px;
+    background-color: #3b3f44; /* Dark gray footer */
+    color: white;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+    .Workerfooter a {
+        color: #d1d1d1; /* Light gray for footer links */
+        text-decoration: none;
+    }
+
+        .Workerfooter a:hover {
+            color: #ffffff; /* White on hover */
+        }
+
+/* General Styles for Cards */
+.card {
+    background-color: #f2f2f2; /* Light gray background */
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: #3b3f44; /* Dark gray header */
+    color: white;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background-color: #f9f9f9; /* Light gray footer */
+    border-top: 1px solid #dddddd;
+    text-align: right;
+}
+
+/* Buttons */
+button {
+    background-color: #3b3f44; /* Dark gray background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #5c6369; /* Darker gray on hover */
+    }
+
+/* Input Fields */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+        border-color: #3b3f44; /* Dark gray border on focus */
+        outline: none;
+    }
+
+/* Animal Images */
+.animal-img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Animal Listing Page */
+.animal-listing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.animal-card {
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+    .animal-card:hover {
+        transform: scale(1.05);
+    }
+
+    .animal-card img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .WorkerSidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .WorkerContent {
+        margin-left: 0;
+    }
+}
+

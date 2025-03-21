@@ -1,0 +1,23 @@
+﻿@model AnimalShelter.Models.MedicalRecord
+
+@{
+    ViewData["Title"] = "Edit Medical Record";
+}
+
+<h1>Edit Medical Record</h1>
+
+<form method="post">
+    <div>
+        <label for="AnimalId">Animal:</label>
+        <select asp-for="AnimalId" class="form-control" asp-items="@(new SelectList(ViewBag.Animals, "Id", "Name"))"></select>
+    </div>
+    <div>
+        <label for="RecordDate">Record Date:</label>
+        <input asp-for="RecordDate" type="date" class="form-control" />
+    </div>
+    <div>
+        <label for="Description">Description:</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

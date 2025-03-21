@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AnimalShelter</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Css/styles.css" asp-append-version="true" /> <!-- Custom CSS -->
+</head>
+<body class="WorkerBody">
+    <div class="WorkerSidebar">
+        <div class="WorkerLogo">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AnimalShelter</a>
+        </div>
+        <ul class="WorkerNav">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Adoption" asp-action="Index">Adopted Animals</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="HowToHelp">How to Help</a>
+            </li>
+
+            <!-- Admin -->
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Roles" asp-action="AssignRole">Assign Roles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Animal" asp-action="Available">Available Animals</a>
+                </li>
+            }
+
+            <!-- Admin, Manager -->
+            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Animal" asp-action="Index">Manage Animals</a>
+                </li>
+            }
+
+            <!-- Admin, Manager, Doctor -->
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="MedicalRecord" asp-action="Index">Medical Records</a>
+             </li>
+        </ul>
+    </div>
+
+    <div class="WorkerContent">
+        <header class="WorkerHeader">
+            <div class="container-fluid">
+                <partial name="_LoginPartial" />
+            </div>
+        </header>
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="Workerfooter text-muted">
+            <div class="container">
+                &copy; 2025 - AnimalShelter - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

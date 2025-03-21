@@ -1,0 +1,11 @@
+﻿@model AnimalShelter.Models.MedicalRecord
+
+<h2>Medical Record Details</h2>
+
+<div>
+    <h4>Animal: @Model.Animal.Name</h4>
+    <p><strong>Record Date:</strong> @Model.RecordDate.ToString("yyyy-MM-dd")</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+</div>
+
+<a href="@Url.Action("Index", "MedicalRecord", new { animalId = Model.AnimalId })" class="btn btn-secondary">Back to List</a>

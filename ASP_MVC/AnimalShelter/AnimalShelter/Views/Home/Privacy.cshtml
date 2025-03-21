@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+    if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Doctor"))
+    {
+        Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomePrivacyLayout.cshtml";
+    }
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>At our Animal Shelter, we are committed to protecting your privacy. This privacy policy outlines how we collect, use, and safeguard your personal information.</p>
+
+<h3>1. Information We Collect</h3>
+<p>We collect personal information that you provide when you create an account, adopt an animal, or contact us. This may include:</p>
+<ul>
+    <li>Name</li>
+    <li>Email address</li>
+    <li>Phone number</li>
+    <li>Address</li>
+    <li>Adoption history</li>
+</ul>
+
+<h3>2. How We Use Your Information</h3>
+<p>Your personal information helps us improve your experience with our shelter. We use your information for the following purposes:</p>
+<ul>
+    <li>To process adoption requests</li>
+    <li>To keep you updated on the status of available animals</li>
+    <li>To send newsletters or updates regarding our shelter's activities</li>
+    <li>To respond to inquiries or requests</li>
+</ul>
+
+<h3>3. Sharing Your Information</h3>
+<p>We will never sell or rent your personal information. However, we may share information with third-party service providers to help manage our shelter's operations. These third parties will be required to maintain the confidentiality of your information.</p>
+
+<h3>4. Security of Your Information</h3>
+<p>We take reasonable measures to protect your personal information from unauthorized access, alteration, or disclosure. All sensitive data, such as payment information, is encrypted and handled securely.</p>
+
+<h3>5. Your Rights</h3>
+<p>You have the right to:</p>
+<ul>
+    <li>Access the personal information we hold about you</li>
+    <li>Request corrections to any inaccurate information</li>
+    <li>Request the deletion of your data, subject to legal obligations</li>
+</ul>
+
+<h3>6. Contact Us</h3>
+<p>If you have any questions or concerns about your privacy, please feel free to contact us:</p>
+<ul>
+    <li>Email: <a href="mailto:info@animalshelter.com">info@animalshelter.com</a></li>
+    <li>Phone: <a href="tel:+1234567890">+123 456 7890</a></li>
+    <li>Visit us: <a asp-controller="Home" asp-action="Index">Our Shelter</a></li>
+</ul>
+
+<p>By using our website and services, you consent to the collection and use of your information as described in this privacy policy.</p>

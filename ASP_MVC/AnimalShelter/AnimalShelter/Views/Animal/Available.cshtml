@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AnimalShelter.Models.Animal>
+
+@{
+    ViewData["Title"] = "Available Animals";
+    @if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomePrivacyLayout.cshtml";
+    }
+}
+
+<h1>Available Animals</h1>
+
+@if (!Model.Any())
+{
+    <p>No available animals</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Status</th>
+                <th>Medical Records</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animal in Model)
+            {
+                <tr>
+                    <td>@animal.Id</td>
+                    <td>@animal.Name</td>
+                    <td>@animal.Species</td>
+                    <td>@animal.Age</td>
+                    <td>@animal.Status</td>
+                    <td>
+                        <medical-record-count animal-id="@animal.Id" animal-name="@animal.Name"></medical-record-count>
+                    </td>
+                    <td>
+                        <!-- Akcja rezerwacji zwierzęcia -->
+                        <form method="post" asp-action="Reserve" asp-route-id="@animal.Id">
+                            <button type="submit" class="btn btn-warning">Reserve</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

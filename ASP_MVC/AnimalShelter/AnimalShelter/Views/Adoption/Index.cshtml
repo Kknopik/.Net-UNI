@@ -1,0 +1,18 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Adoption List";
+    if (User.IsInRole("Admin") || User.IsInRole("Manager") || User.IsInRole("Doctor"))
+    {
+        Layout = "~/Views/Shared/_WorkerLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_HomePrivacyLayout.cshtml";
+    }
+}
+
+<h1>Adoption List</h1>
+
+<dynamic-table columns="@Model.Columns" rows="@Model.Rows"></dynamic-table>
+
