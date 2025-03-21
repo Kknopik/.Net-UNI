@@ -1,2 +1,2 @@
 # .Net-UNI
-.Net projects made in uni
+Projekty .Net zrobione na studiach + pliki z poleceniami
